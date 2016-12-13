@@ -1,5 +1,8 @@
 package io.keepcoding.townguide.model;
 
+import android.support.annotation.NonNull;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -9,6 +12,26 @@ import java.util.List;
 public class Shops implements IShopsIterable, IShopsUpdatable{
 
     List<Shop> shops;
+
+    public static @NonNull Shops build(@NonNull final List<Shop> shopList) {
+        Shops shops = new Shops(shopList);
+
+        if (shopList == null) {
+            shops.shops = new ArrayList<>();
+        }
+
+        return shops;
+    }
+
+    public static @NonNull Shops build(){
+        return build(new ArrayList<Shop>());
+    }
+
+    private Shops(){}
+
+    private Shops(List<Shop> shops){
+        this.shops = shops;
+    }
 
     @Override
     public long size() {

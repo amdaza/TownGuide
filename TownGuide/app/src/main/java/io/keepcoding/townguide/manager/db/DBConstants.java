@@ -21,6 +21,18 @@ public class DBConstants {
     public static final String KEY_SHOP_LONGITUDE = "LONGITUDE";
     public static final String KEY_SHOP_DESCRIPTION = "DESCRIPTION";
 
+    public static final String[] ALL_COLUMNS = {
+            KEY_SHOP_ID,
+            KEY_SHOP_NAME,
+            KEY_SHOP_IMAGE_URL,
+            KEY_SHOP_LOGO_IMAGE_URL,
+            KEY_SHOP_ADDRESS,
+            KEY_SHOP_URL,
+            KEY_SHOP_DESCRIPTION,
+            KEY_SHOP_LATITUDE,
+            KEY_SHOP_LONGITUDE
+    };
+
 
     public static final String SQL_SCRIPT_CREATE_SHOP_TABLE =
             "create table " + TABLE_SHOP + "( "

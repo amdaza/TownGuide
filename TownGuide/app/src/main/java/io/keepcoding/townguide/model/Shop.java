@@ -11,6 +11,7 @@ public class Shop {
     private String logoImgUrl;
     private String url;
     private String description;
+    private String address;
     private float latitude;
     private float longitude;
 
@@ -84,5 +85,13 @@ public class Shop {
 
     public void setLongitude(float longitude) {
         this.longitude = longitude;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

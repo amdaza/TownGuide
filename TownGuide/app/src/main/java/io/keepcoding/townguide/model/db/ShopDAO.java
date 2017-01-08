@@ -153,10 +153,11 @@ public class ShopDAO implements DAOPersistable<Shop> {
 
         List<Shop> shops = new LinkedList<>();
 
-        while (c.moveToNext()) {
+        c.moveToFirst();
+        do {
             Shop shop = getShop(c);
             shops.add(shop);
-        }
+        } while (c.moveToNext());
 
         return shops;
     }

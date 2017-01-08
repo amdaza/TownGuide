@@ -9,7 +9,7 @@ import java.util.List;
 public interface DAOPersistable<T> {
     long insert(@NonNull T data);
     void update(long id, @NonNull T data);
-    void delete(long id);
+    int delete(long id);
     void deleteAll();
     @Nullable
     Cursor queryCursor();

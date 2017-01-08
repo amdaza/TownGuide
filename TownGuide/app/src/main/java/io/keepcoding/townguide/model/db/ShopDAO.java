@@ -87,8 +87,8 @@ public class ShopDAO implements DAOPersistable<Shop> {
     }
 
     @Override
-    public void delete(long id) {
-        db.delete(TABLE_SHOP, KEY_SHOP_ID + " = " + id, null);  // 1st way
+    public int delete(long id) {
+        return db.delete(TABLE_SHOP, KEY_SHOP_ID + " = " + id, null);  // 1st way
         // db.delete(TABLE_SHOP, KEY_SHOP_ID + " = ?", new String[]{ "" + id });  // 2nd way
         //db.delete(TABLE_SHOP, KEY_SHOP_ID + " = ? AND " + KEY_SHOP_NAME + "= ?" ,
         //        new String[]{ "" + id, "pepito" });  // 2nd way

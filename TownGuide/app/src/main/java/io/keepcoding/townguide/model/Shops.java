@@ -44,6 +44,11 @@ public class Shops implements IShopsIterable, IShopsUpdatable{
     }
 
     @Override
+    public @NonNull  List<Shop> allShops() {
+        return this.shops;
+    }
+
+    @Override
     public void add(Shop shop) {
         shops.add(shop);
     }

@@ -7,7 +7,6 @@ public class DBConstants {
 
     public static final String TABLE_SHOP = "SHOP";
 
-
     // Table field constants
     public static final String KEY_SHOP_ID = "_id";
     public static final String KEY_SHOP_NAME = "NAME";
@@ -47,7 +46,9 @@ public class DBConstants {
                     + KEY_SHOP_DESCRIPTION + " text"
                     + ");";
 
-    public static final String[] CREATE_DATABASE = {
+    public static final String DROP_DATABASE_SCRIPTS = "";
+
+    public static final String[] CREATE_DATABASE_SCRIPTS = {
             SQL_SCRIPT_CREATE_SHOP_TABLE
     };
 }

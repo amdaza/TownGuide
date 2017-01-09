@@ -39,17 +39,18 @@ public class ShopsAdapter extends RecyclerView.Adapter<ShopRowViewHolder> {
         final Shop shop = shops.get(position);
 
         row.setShop(shop);
-/*
-        holder.setShop(shop);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+
+        row.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /*
                 if (listener != null) {
                     listener.clickedOn(shop, position);
                 }
+                */
             }
-        });*/
+        });
     }
 
     @Override

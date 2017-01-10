@@ -41,6 +41,10 @@ public class ShopsFragment extends Fragment {
         shopsRecyclerView = (RecyclerView) view.findViewById(R.id.shops_recycler_view);
         shopsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+        // DON'T call updateUI() here, it will not work
+        // if no time to get all data from database, call in getShops instead
+        //updateUI();
+
         return view;
     }
 
@@ -67,6 +71,8 @@ public class ShopsFragment extends Fragment {
 
     public void setShops(Shops shops) {
         this.shops = shops;
+
+        // Call to updateUI HERE instead of in onCreateView
         updateUI();
     }
 

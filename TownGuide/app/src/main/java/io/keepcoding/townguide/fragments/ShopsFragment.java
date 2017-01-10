@@ -45,7 +45,7 @@ public class ShopsFragment extends Fragment {
     }
 
     private void updateUI() {
-        adapter = new ShopsAdapter(shops, getActivity());
+        adapter = new ShopsAdapter(getShops(), getActivity());
         shopsRecyclerView.setAdapter(adapter);
 
         adapter.setOnElementClickListener(new ShopsAdapter.OnElementClick<Shop>() {
@@ -59,6 +59,10 @@ public class ShopsFragment extends Fragment {
             }
         });
 
+    }
+
+    public Shops getShops() {
+        return shops;
     }
 
     public void setShops(Shops shops) {

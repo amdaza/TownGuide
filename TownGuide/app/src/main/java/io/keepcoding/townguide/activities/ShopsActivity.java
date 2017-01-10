@@ -3,11 +3,14 @@ package io.keepcoding.townguide.activities;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import java.util.List;
+
 import io.keepcoding.townguide.R;
 import io.keepcoding.townguide.adapters.ShopsAdapter;
 import io.keepcoding.townguide.fragments.ShopsFragment;
 import io.keepcoding.townguide.model.Shop;
 import io.keepcoding.townguide.model.Shops;
+import io.keepcoding.townguide.model.db.ShopDAO;
 import io.keepcoding.townguide.navigator.Navigator;
 
 public class ShopsActivity extends AppCompatActivity {
@@ -24,6 +27,10 @@ public class ShopsActivity extends AppCompatActivity {
 
         shopsFragment = (ShopsFragment) getSupportFragmentManager().findFragmentById(R.id.activity_shops_fragment_shops);
 
+        Shops shops = getShops();
+
+        shopsFragment.setShops(shops);
+
         shopsFragment.setOnElementClickListener(new ShopsAdapter.OnElementClick<Shop>() {
 
             @Override
@@ -31,6 +38,14 @@ public class ShopsActivity extends AppCompatActivity {
                 Navigator.navigateFromShopsActivityToDetailShopActivity(shop, ShopsActivity.this);
             }
         });
+    }
+
+    private Shops getShops() {
+        ShopDAO dao = new ShopDAO(this);
+
+        List<Shop> shopList = dao.query();
+
+        return Shops.build(shopList);
     }
 
 

@@ -56,12 +56,18 @@ public class ShopsActivity extends AppCompatActivity {
                 //ShopDAO dao = new ShopDAO(this);
                 ShopDAO dao = new ShopDAO(getBaseContext());
 
-                List<Shop> shopList = dao.query();
+                final List<Shop> shopList = dao.query();
 
-                Shops shops = Shops.build(shopList);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Shops shops = Shops.build(shopList);
 
-                // DON'T DO THIS IN BACKGROUND
-                shopsFragment.setShops(shops);
+                        // DON'T DO THIS IN BACKGROUND
+                        shopsFragment.setShops(shops);
+
+                    }
+                });
             }
         });
     }

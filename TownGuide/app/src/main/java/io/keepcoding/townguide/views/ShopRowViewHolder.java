@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
@@ -40,10 +41,19 @@ public class ShopRowViewHolder extends RecyclerView.ViewHolder {
         this.nameTextView.setText(shop.getName());
         //this.logoImageView.setImageBitmap(null);
 
+        // Default image
+//
+//        Picasso.with(context.get())
+//            .load(shop.getLogoImgUrl())
+//            .networkPolicy(NetworkPolicy.OFFLINE)
+//            .placeholder(android.R.drawable.ic_btn_speak_now)
+//            .into(logoImageView);
+
         Picasso.with(context.get())
             .load(shop.getLogoImgUrl())
-            .networkPolicy(NetworkPolicy.OFFLINE)
-            .placeholder(android.R.drawable.ic_btn_speak_now)
+            .placeholder(android.R.drawable.ic_input_get)
+            .memoryPolicy(MemoryPolicy.NO_CACHE)
+            .networkPolicy(NetworkPolicy.NO_CACHE)
             .into(logoImageView);
 
     }

@@ -6,4 +6,5 @@ package io.keepcoding.townguide.utils;
 
 public class Constants {
     public static String appName = "io.keepcoding.townguide";
+    public static final String INTENT_KEY_DETAIL_SHOP = appName + "INTENT_KEY_DETAIL_SHOP";
 }

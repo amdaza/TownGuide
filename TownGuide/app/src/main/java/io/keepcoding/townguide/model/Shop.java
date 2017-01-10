@@ -1,10 +1,12 @@
 package io.keepcoding.townguide.model;
 
+import java.io.Serializable;
+
 /**
  * Created by Alicia on 13/12/2016.
  */
 
-public class Shop {
+public class Shop implements Serializable {
     private long id;
     private String name;
     private String imageUrl;
@@ -14,6 +16,8 @@ public class Shop {
     private String address;
     private float latitude;
     private float longitude;
+
+
 
     public Shop(long id, String name) {
         this.id = id;

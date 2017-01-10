@@ -2,6 +2,7 @@ package io.keepcoding.townguide.fragments;
 
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 
 import io.keepcoding.townguide.R;
 import io.keepcoding.townguide.adapters.ShopsAdapter;
+import io.keepcoding.townguide.model.Shop;
 import io.keepcoding.townguide.model.Shops;
 
 
@@ -21,6 +23,8 @@ public class ShopsFragment extends Fragment {
     private RecyclerView shopsRecyclerView;
     private ShopsAdapter adapter;
     private Shops shops;
+
+    private ShopsAdapter.OnElementClick<Shop> listener;
     //private OnElementClick<Shop> listener;
 
 
@@ -43,21 +47,29 @@ public class ShopsFragment extends Fragment {
     private void updateUI() {
         adapter = new ShopsAdapter(shops, getActivity());
         shopsRecyclerView.setAdapter(adapter);
-/*
-        adapter.setOnElementClickListener(new OnElementClick<Shop>() {
+
+        adapter.setOnElementClickListener(new ShopsAdapter.OnElementClick<Shop>() {
             @Override
-            public void clickedOn(@NonNull Shop element, int position) {
+            public void elementClicked(@NonNull Shop shop, int position) {
                 if (listener != null) {
-                    listener.clickedOn(element, position);
+                    listener.elementClicked(shop, position);
+                    //listener.clickedOn(element, position);
+
                 }
             }
         });
-*/
+
     }
 
     public void setShops(Shops shops) {
         this.shops = shops;
         updateUI();
+    }
+
+
+
+    public void setOnElementClickListener(@NonNull final ShopsAdapter.OnElementClick<Shop> listener) {
+        this.listener = listener;
     }
 /*
     public OnElementClick<Shop> getListener() {

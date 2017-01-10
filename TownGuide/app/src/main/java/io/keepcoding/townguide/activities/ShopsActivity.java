@@ -16,7 +16,7 @@ import io.keepcoding.townguide.navigator.Navigator;
 public class ShopsActivity extends AppCompatActivity {
 
     private ShopsFragment shopsFragment;
-    private Shops shops;
+    //private Shops shops;
 
     //Button shopsButton;
 
@@ -27,9 +27,9 @@ public class ShopsActivity extends AppCompatActivity {
 
         shopsFragment = (ShopsFragment) getSupportFragmentManager().findFragmentById(R.id.activity_shops_fragment_shops);
 
-        Shops shops = getShops();
+        //Shops shops = getShops();
 
-        shopsFragment.setShops(shops);
+        //shopsFragment.setShops(shops);
 
         shopsFragment.setOnElementClickListener(new ShopsAdapter.OnElementClick<Shop>() {
 
@@ -39,7 +39,7 @@ public class ShopsActivity extends AppCompatActivity {
             }
         });
     }
-
+/*
     private Shops getShops() {
         ShopDAO dao = new ShopDAO(this);
 
@@ -47,6 +47,25 @@ public class ShopsActivity extends AppCompatActivity {
 
         return Shops.build(shopList);
     }
+    */
+    private void loadShops() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                //ShopDAO dao = new ShopDAO(this);
+                ShopDAO dao = new ShopDAO(getBaseContext());
+
+                List<Shop> shopList = dao.query();
+
+                Shops shops = Shops.build(shopList);
+
+                // DON'T DO THIS IN BACKGROUND
+                shopsFragment.setShops(shops);
+            }
+        });
+    }
+
 
 
 }

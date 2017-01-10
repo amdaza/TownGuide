@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.NetworkPolicy;
+import com.squareup.picasso.Picasso;
+
 import java.lang.ref.WeakReference;
 
 import io.keepcoding.townguide.R;
@@ -35,13 +38,13 @@ public class ShopRowViewHolder extends RecyclerView.ViewHolder {
             return;
         }
         this.nameTextView.setText(shop.getName());
-        this.logoImageView.setImageBitmap(null);
-        /*
+        //this.logoImageView.setImageBitmap(null);
+
         Picasso.with(context.get())
-                .load(shop.getLogoImgUrl())
-                .networkPolicy(NetworkPolicy.OFFLINE)
-                .placeholder(android.R.drawable.ic_btn_speak_now)
-                .into(logoImageView);
-                */
+            .load(shop.getLogoImgUrl())
+            .networkPolicy(NetworkPolicy.OFFLINE)
+            .placeholder(android.R.drawable.ic_btn_speak_now)
+            .into(logoImageView);
+
     }
 }

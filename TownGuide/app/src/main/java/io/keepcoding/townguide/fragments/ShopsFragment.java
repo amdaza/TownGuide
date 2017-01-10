@@ -73,6 +73,7 @@ public class ShopsFragment extends Fragment {
         this.shops = shops;
 
         // Call to updateUI HERE instead of in onCreateView
+        // and AFTER get data
         updateUI();
     }
 

@@ -14,6 +14,7 @@ import java.util.List;
 import io.keepcoding.townguide.manager.db.DBHelper;
 import io.keepcoding.townguide.model.Shop;
 
+import static android.R.attr.id;
 import static io.keepcoding.townguide.manager.db.DBConstants.ALL_COLUMNS;
 import static io.keepcoding.townguide.manager.db.DBConstants.KEY_SHOP_ADDRESS;
 import static io.keepcoding.townguide.manager.db.DBConstants.KEY_SHOP_DESCRIPTION;
@@ -160,5 +161,30 @@ public class ShopDAO implements DAOPersistable<Shop> {
         } while (c.moveToNext());
 
         return shops;
+    }
+
+
+    public static @NonNull Shop getShopFromContentValues(final @NonNull ContentValues contentValues) {
+        final Shop shop = new Shop(1, "");
+
+        //shop.setId(contentValues.getAsInteger(KEY_SHOP_ID));
+        shop.setName(contentValues.getAsString(KEY_SHOP_NAME));
+        shop.setAddress(contentValues.getAsString(KEY_SHOP_ADDRESS));
+        shop.setDescription(contentValues.getAsString(KEY_SHOP_DESCRIPTION));
+        shop.setImageUrl(contentValues.getAsString(KEY_SHOP_IMAGE_URL));
+        shop.setLogoImgUrl(contentValues.getAsString(KEY_SHOP_LOGO_IMAGE_URL));
+        shop.setUrl(contentValues.getAsString(KEY_SHOP_URL));
+        shop.setLatitude(contentValues.getAsFloat(KEY_SHOP_LATITUDE));
+        shop.setLongitude(contentValues.getAsFloat(KEY_SHOP_LONGITUDE));
+
+        return shop;
+    }
+
+    public Cursor queryCursor(long l) {
+        Cursor c = db.query(TABLE_SHOP, ALL_COLUMNS, "ID = " + id, null, null, null, KEY_SHOP_ID);
+        if (c != null && c.getCount() > 0) {
+            c.moveToFirst();
+        }
+        return c;
     }
 }
